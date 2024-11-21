@@ -16,7 +16,7 @@ const port = process.env.PORT;
 app.use(
   cors({
     credentials: true,
-    origin: "https://dlogs-client.vercel.app",
+    origin: "https://dlogs-client.vercel.app/",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })

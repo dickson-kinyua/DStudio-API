@@ -13,7 +13,14 @@ const port = process.env.PORT;
 
 //middleware
 
-app.use(cors({ credentials: true, origin: "https://dlogs-client.vercel.app" }));
+app.use(
+  cors({
+    credentials: true,
+    origin: "https://dlogs-client.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 // Middleware to parse URL-encoded data (e.g., form submissions)

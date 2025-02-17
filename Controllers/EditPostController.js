@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import PostModel from "../models/postmodel.js";
+import PostModel from "../models/postModel.js";
 
 const editPostController = async (req, res) => {
   const id = req.params?.id;

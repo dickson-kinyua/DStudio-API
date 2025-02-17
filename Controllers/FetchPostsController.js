@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import PostModel from "../models/PostModel.js";
+import PostModel from "../models/postmodel.js";
 import jwt from "jsonwebtoken";
 
 export const fetchPosts = async (req, res) => {

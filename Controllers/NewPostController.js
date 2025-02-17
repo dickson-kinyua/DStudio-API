@@ -1,4 +1,4 @@
-import PostModel from "../models/PostModel.js";
+import PostModel from "../models/postmodel.js";
 import { missingInput } from "./missingInputChecker.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";

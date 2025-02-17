@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
-import PostModel from "../models/PostModel.js";
+import PostModel from "../models/postmodel.js";
 
 export const deleteAllPosts = async (req, res) => {
   try {

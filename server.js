@@ -3,20 +3,21 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import routes from "./routes/routes.js";
+import routes from "./Routes/routes.js";
 
 dotenv.config();
 
 const app = express();
 const db = process.env.MONGODB;
 const port = process.env.PORT;
+const frontend_url = process.env.FRONT_END_URL;
 
 //middleware
 
 app.use(
   cors({
     credentials: true,
-    origin: "https://dlogs-client.vercel.app/",
+    origin: frontend_url,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })

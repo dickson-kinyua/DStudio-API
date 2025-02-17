@@ -1,35 +1,25 @@
 import mongoose from "mongoose";
-
 const { Schema } = mongoose;
 
 const PostSchema = new Schema(
   {
-    title: {
+    todo: {
       type: String,
       required: true,
-      trim: true,
     },
-    author: {
+    priority: {
       type: String,
       required: true,
-      trim: true,
     },
-    description: {
-      type: String,
-      required: true,
-      trim: true,
-    },
+    completed: Boolean,
 
-    date: {
-      type: Date,
-      required: true, // Adjust if date is mandatory
-    },
+    author: { type: Schema.Types.ObjectId, ref: "user" },
   },
   {
-    timestamps: true, // Adds createdAt and updatedAt fields automatically
+    timestamps: true,
   }
 );
 
-const PostModel = mongoose.model("Form", PostSchema);
+const PostModel = mongoose.model("todo", PostSchema);
 
 export default PostModel;

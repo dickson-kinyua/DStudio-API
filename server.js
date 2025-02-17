@@ -8,16 +8,13 @@ import routes from "./routes/routes.js";
 dotenv.config();
 
 const app = express();
-const db = process.env.MONGODB;
-const port = process.env.PORT;
-const frontend_url = process.env.FRONT_END_URL;
 
 //middleware
 
 app.use(
   cors({
     credentials: true,
-    origin: frontend_url,
+    origin: process.env.FRONT_END_URL,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -28,10 +25,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mongoose
-  .connect(db)
+  .connect(process.env.MONGODB)
   .then((result) => {
     console.log("Connected to the database");
-    app.listen(port, () => console.log(`Listening to port ${port}`));
+    app.listen(process.env.PORT, () =>
+      console.log(`Listening to port ${process.env.PORT}`)
+    );
   })
   .catch((error) => console.log("Could not connect to the database"));
 

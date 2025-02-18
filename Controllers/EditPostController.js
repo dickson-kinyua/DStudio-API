@@ -4,7 +4,7 @@ import PostModel from "../models/postModel.js";
 const editPostController = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
+    // console.log(id);
 
     // Check if the ID is valid
     if (!mongoose.Types.ObjectId.isValid(id)) {

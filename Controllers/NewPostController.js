@@ -22,7 +22,7 @@ export const createPost = async (req, res) => {
     if (!newPost) {
       return res.status(401).json({ error: "could not create post" });
     }
-    res.status(201).json(newPost);
+    res.status(201).json("ok");
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error: "internal server error" });

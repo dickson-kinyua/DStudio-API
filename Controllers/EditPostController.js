@@ -4,19 +4,16 @@ import PostModel from "../models/postModel.js";
 const editPostController = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(typeof id);
+    console.log(id);
 
-    const objectId = new mongoose.Types.ObjectId(id);
-
-    // Validate if the id is a valid ObjectId
-    if (!mongoose.Types.ObjectId.isValid(objectId)) {
+    // Check if the ID is valid
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ error: "Invalid post ID" });
     }
 
-    // Find the post by ID
-    const postToUpdate = await PostModel.findById(objectId);
+    // Find the post using the ObjectId
+    const postToUpdate = await PostModel.findById(id);
 
-    // Check if the post exists
     if (!postToUpdate) {
       return res.status(404).json({ error: "No post found" });
     }

@@ -9,12 +9,9 @@ const editPostController = async (req, res) => {
   // console.log(Id);
 
   try {
-    const postToUpdate = await PostModel.findOne({ _id: id }, [
-      //   { $set: { completed: { $not: "$completed" } } },
-    ]);
+    const postToUpdate = await PostModel.findOne({ _id: id });
     postToUpdate.completed = !postToUpdate.completed;
     await postToUpdate.save();
-    // console.log(postToUpdate.completed);
 
     if (!postToUpdate) {
       return res.status(400).json({ error: "no post found" });

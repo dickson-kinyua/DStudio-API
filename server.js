@@ -12,7 +12,7 @@ const app = express();
 //middleware
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://dstudio-lovat.vercel.app",
+  "https://d-studio-ui.vercel.app/",
 ];
 app.use(
   cors({

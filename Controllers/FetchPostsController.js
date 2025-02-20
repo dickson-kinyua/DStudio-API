@@ -13,7 +13,7 @@ export const fetchPosts = async (req, res) => {
     const objectId = new mongoose.Types.ObjectId(userId); // Convert to ObjectId
     const posts = await PostModel.find({ author: objectId }).lean();
 
-    if (posts.length === 0) {
+    if (!posts) {
       return res.status(404).json({ error: "No posts found" });
     }
 

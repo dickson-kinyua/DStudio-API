@@ -1,20 +1,26 @@
-import mongoose from "mongoose";
 import PostModel from "../models/postModel.js";
-import jwt from "jsonwebtoken";
 
 export const fetchPosts = async (req, res) => {
-  const userId = req.user?.userId;
-
   try {
-    const posts = await PostModel.find({ author: userId });
+    const userId = req.user?.userId;
+    console.log(userId);
 
-    if (posts.length === 0) {
+    if (!userId) {
+      return res
+        .status(401)
+        .json({ error: "Unauthorized: No user ID provided" });
+    }
+
+    const posts = await PostModel.find({ author: userId }).lean();
+    console.log("Posts found:", posts); // Debugging
+
+    if (!posts.length) {
       return res.status(404).json({ error: "No posts found" });
     }
 
     return res.status(200).json(posts);
   } catch (error) {
-    console.error(error.message);
+    console.error("Error fetching posts:", error);
     return res.status(500).json({ error: "Internal server error" });
   }
 };

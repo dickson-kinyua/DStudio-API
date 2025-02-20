@@ -1,5 +1,7 @@
 import UserModel from "../models/userModel.js";
 import { missingInput } from "./missingInputChecker.js";
+import { generateToken } from "../Utils/generateToken.js";
+
 import bcrypt from "bcryptjs";
 
 const salt = bcrypt.genSaltSync(12);
@@ -24,7 +26,8 @@ const registerUser = async (req, res) => {
       return res.status(401).json({ error: "User not created" });
     }
 
-    res.status(201).json("ok");
+    generateToken(res, newUser);
+    res.json({ userName: newUser.name, id: newUser._id });
   } catch (error) {
     return res.status(500).json({ error: "internal server error" });
   }
